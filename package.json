@@ -1,0 +1,39 @@
+{
+  "name": "base-header",
+  "version": "0.1.0",
+  "description": "Base header component for the Gewaer platform.",
+  "main": "./dist/base-header.umd.min.js",
+  "files": [
+    "dist/base-header.umd.min.js",
+    "dist/base-header.css"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "bundle": "vue-cli-service build --target lib --name base-header ./src/index.vue",
+    "lint": "vue-cli-service lint"
+  },
+  "keywords": [
+    "gewaer"
+  ],
+  "author": "",
+  "license": "MIT",
+  "precommit": [
+    "lint"
+  ],
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "vue": "^2.6.8",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-eslint": "^3.2.1",
+    "@vue/cli-service": "^3.2.0",
+    "eslint": "^5.9.0",
+    "node-sass": "^4.10.0",
+    "pre-commit": "^1.2.2",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.6.8"
+  }
+}
