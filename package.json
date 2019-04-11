@@ -18,6 +18,11 @@
   ],
   "author": "",
   "license": "MIT",
+  "bugs": "https://github.com/Gewaer/base-header/issues/new",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gewaer/base-header"
+  },
   "precommit": [
     "lint"
   ],
