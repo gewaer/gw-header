@@ -1,5 +1,5 @@
 {
-  "name": "base-header",
+  "name": "@gewaer/base-header",
   "version": "0.1.0",
   "description": "Base header component for the Gewaer platform.",
   "main": "./dist/base-header.umd.min.js",
