@@ -38,7 +38,7 @@ export default {
     order: 2;
 
     .grid-box {
-        background: url('../assets/icons/top_tray.png') no-repeat;
+        background: url('../assets/icons/top-tray.png') no-repeat;
         background-position-x: 0%;
         background-position-y: 0%;
         background-position: -41px center;
