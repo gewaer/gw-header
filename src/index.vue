@@ -2,7 +2,7 @@
     <div class="header app-header">
         <div class="left-side-header d-flex">
             <div class="sidebar-toggle" @click="$emit('handleSidebar', !showSidebar)">
-                <img src="../assets/icons/hamburguer-menu.png">
+                <img src="./assets/icons/hamburguer-menu.png">
             </div>
             <gw-company-logo />
             <!-- <gw-app-switcher /> -->
