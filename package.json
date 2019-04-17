@@ -1,16 +1,16 @@
 {
-  "name": "@gewaer/base-header",
+  "name": "@gewaer/gw-header",
   "version": "0.1.0",
   "description": "Base header component for the Gewaer platform.",
   "main": "./dist/base-header.umd.min.js",
   "files": [
-    "dist/base-header.umd.min.js",
-    "dist/base-header.css"
+    "dist/gw-header.umd.min.js",
+    "dist/gw-header.css"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "bundle": "vue-cli-service build --target lib --name base-header ./src/index.vue",
+    "bundle": "vue-cli-service build --target lib --name gw-header ./src/index.vue",
     "lint": "vue-cli-service lint"
   },
   "keywords": [
@@ -18,10 +18,10 @@
   ],
   "author": "",
   "license": "MIT",
-  "bugs": "https://github.com/Gewaer/base-header/issues/new",
+  "bugs": "https://github.com/Gewaer/gw-header/issues/new",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Gewaer/base-header"
+    "url": "https://github.com/Gewaer/gw-header"
   },
   "precommit": [
     "lint"

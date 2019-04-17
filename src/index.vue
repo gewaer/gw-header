@@ -2,15 +2,15 @@
     <div class="header app-header">
         <div class="left-side-header d-flex">
             <div class="sidebar-toggle" @click="$emit('handleSidebar', !showSidebar)">
-                <img src="/img/icons/hamburguer-menu.png">
+                <img src="../assets/icons/hamburguer-menu.png">
             </div>
-            <company-logo />
-            <!-- <app-switcher /> -->
+            <gw-company-logo />
+            <!-- <gw-app-switcher /> -->
         </div>
         <div class="right-side-header d-flex">
-            <companies-switcher />
-            <user-options />
-            <notifications
+            <gw-companies-switcher />
+            <gw-user-options />
+            <gw-notifications
                 @toggleNotifications="$emit('toggleNotifications')"
             />
         </div>
@@ -18,20 +18,20 @@
 </template>
 
 <script type="text/javascript">
-import AppSwitcher from "./app-switcher";
-import CompaniesSwitcher from "./companies-switcher";
-import CompanyLogo from "./company-logo";
-import Notifications from "./notifications";
-import UserOptions from "./user-options";
+import GwAppSwitcher from "./components/gw-app-switcher";
+import GwCompaniesSwitcher from "./components/gw-companies-switcher";
+import GwCompanyLogo from "./components/gw-company-logo";
+import GwNotifications from "./components/gw-notifications";
+import GwUserOptions from "./components/gw-user-options";
 
 export default {
-    name: "AppHeader",
+    name: "GwHeader",
     components: {
-        AppSwitcher,
-        CompaniesSwitcher,
-        CompanyLogo,
-        Notifications,
-        UserOptions
+        GwAppSwitcher,
+        GwCompaniesSwitcher,
+        GwCompanyLogo,
+        GwNotifications,
+        GwUserOptions
     },
     props: {
         showSidebar: {

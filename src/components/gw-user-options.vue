@@ -34,14 +34,14 @@
 import { mapState } from "vuex";
 
 export default {
-    name: "UserOptions",
+    name: "GwUserOptions",
     computed: {
         ...mapState({
             companyName: state => state.Company.data && state.Company.data.name,
             userData: state => state.User.data
         }),
         profileImage() {
-            return this.userData.profile_image || "/img/icons/avatar-icon.png";
+            return this.userData.profile_image || "../assets/icons/avatar-icon.png";
         }
     },
     methods: {

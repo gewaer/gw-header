@@ -15,7 +15,7 @@
 import { mapState } from "vuex";
 
 export default {
-    name: "CompanyLogo",
+    name: "GwCompanyLogo",
     computed: {
         ...mapState({
             companyData: state => state.Company.data || {}

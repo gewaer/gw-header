@@ -22,7 +22,7 @@
 import { mapState } from "vuex";
 
 export default {
-    name: "CompaniesSwitcher",
+    name: "GwCompaniesSwitcher",
     computed: {
         ...mapState({
             companiesList: state => state.Company.list,
