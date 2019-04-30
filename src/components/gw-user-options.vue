@@ -10,7 +10,7 @@
             </div>
         </template>
         <ul slot="body" class="profile-dropdown" role="menu">
-            <router-link :to="{ name: 'setingsUsersProfile' }">
+            <router-link :to="{ name: 'settingsUsersProfile' }">
                 <span>Users Settings</span>
             </router-link>
             <router-link :to="{ name: 'settingsCompaniesProfile' }">
