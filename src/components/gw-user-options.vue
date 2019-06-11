@@ -6,7 +6,8 @@
                 <span> {{ userData.lastname }}</span>
             </div>
             <div class="profile-image">
-                <img :src="profileImage">
+                <img v-if="userData.profile_image" :src="userData.profile_image">
+                <img v-else src="../assets/icons/avatar-icon.png">
             </div>
         </template>
         <ul slot="body" class="profile-dropdown" role="menu">
@@ -39,10 +40,7 @@ export default {
         ...mapState({
             companyName: state => state.Company.data && state.Company.data.name,
             userData: state => state.User.data
-        }),
-        profileImage() {
-            return this.userData.profile_image || "../assets/icons/avatar-icon.png";
-        }
+        })
     },
     methods: {
         logout() {

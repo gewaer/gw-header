@@ -1,5 +1,5 @@
 <template>
-    <div v-if="companiesList.length > 1" class="multi-rooftop">
+    <div v-if="showSwitcher" class="multi-rooftop">
         <multiselect
             :allow-empty="false"
             :options="companiesList"
@@ -7,6 +7,8 @@
             :show-labels="false"
             :value="companyData"
             class="rooftop-select"
+            group-values="branches"
+            group-label="name"
             label="name"
             @select="switchCompany"
         />
@@ -28,7 +30,10 @@ export default {
             companiesList: state => state.Company.list,
             companyData: state => state.Company.data,
             userId: state => state.User.data && state.User.data.id
-        })
+        }),
+        showSwitcher() {
+            return this.companiesList.length > 1 || this.companyData.branches.length > 1;
+        }
     },
     methods: {
         switchCompany(company) {
