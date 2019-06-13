@@ -10,7 +10,7 @@
             group-values="branches"
             group-label="name"
             label="name"
-            @select="switchCompany"
+            @select="company => $emit('select', company)"
         />
     </div>
 </template>
@@ -21,33 +21,23 @@
  * and we do not need VueMultiselect to update anything for us.
  * See also: switchCompany()
  */
-import { mapState } from "vuex";
-
 export default {
     name: "GwCompaniesSwitcher",
-    computed: {
-        ...mapState({
-            companiesList: state => state.Company.list,
-            companyData: state => state.Company.data,
-            userId: state => state.User.data && state.User.data.id
-        }),
-        showSwitcher() {
-            return this.companiesList.length > 1 || this.companyData.branches.length > 1;
+    props: {
+        companyData: {
+            type: Object,
+            required: true
+        },
+        companiesList: {
+            type: Array,
+            default() {
+                return []
+            }
         }
     },
-    methods: {
-        switchCompany(company) {
-            axios({
-                url: `/users/${this.userId}`,
-                method: "PUT",
-                data: {
-                    "default_company": company.id
-                }
-            }).then(() => {
-                // Solution implemented for now until we can properly refresh all
-                // of the user's and company's data through Vuex implementation.
-                window.location.reload();
-            });
+    computed: {
+        showSwitcher() {
+            return this.companiesList.length > 1 || this.companyData.branches && this.companyData.branches.length > 1;
         }
     }
 }

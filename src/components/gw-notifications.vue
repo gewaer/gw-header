@@ -2,7 +2,7 @@
     <a
         href="#"
         class="notification-sidebar header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin"
-        @click="$emit('toggleNotifications')"
+        @click="$emit('toggle-notifications')"
     >
         <div class="notification-badge bg-danger">1</div>
     </a>

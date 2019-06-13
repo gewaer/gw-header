@@ -1,28 +1,39 @@
 <template>
     <div class="header app-header">
         <div class="left-side-header d-flex">
-            <div class="sidebar-toggle" @click="$emit('handleSidebar', !showSidebar)">
-                <img src="./assets/icons/hamburguer-menu.png">
-            </div>
-            <gw-company-logo />
+            <slot name="company-logo">
+                <gw-company-logo
+                    :company-logo="companyData.profile_image"
+                    :company-name="companyData.name"
+                />
+            </slot>
             <!-- <gw-app-switcher /> -->
         </div>
         <div class="right-side-header d-flex">
-            <gw-companies-switcher />
-            <gw-user-options />
+            <slot name="companies-switcher">
+                <gw-companies-switcher
+                    :company-data="companyData"
+                    :companies-list="companiesList"
+                    @select="company => $emit('selected-company', company)"
+                />
+            </slot>
+            <gw-user-options
+                :company-data="companyData"
+                :user-data="userData"
+            />
             <gw-notifications
-                @toggleNotifications="$emit('toggleNotifications')"
+                @toggle-notifications="$emit('toggle-notifications')"
             />
         </div>
     </div>
 </template>
 
 <script type="text/javascript">
-import GwAppSwitcher from "./components/gw-app-switcher";
-import GwCompaniesSwitcher from "./components/gw-companies-switcher";
-import GwCompanyLogo from "./components/gw-company-logo";
-import GwNotifications from "./components/gw-notifications";
-import GwUserOptions from "./components/gw-user-options";
+import GwAppSwitcher from "./gw-app-switcher";
+import GwCompaniesSwitcher from "./gw-companies-switcher";
+import GwCompanyLogo from "./gw-company-logo";
+import GwNotifications from "./gw-notifications";
+import GwUserOptions from "./gw-user-options";
 
 export default {
     name: "GwHeader",
@@ -34,9 +45,26 @@ export default {
         GwUserOptions
     },
     props: {
+        companyData: {
+            type: Object,
+            required: true,
+            validator(data) {
+                return data.name;
+            }
+        },
+        companiesList: {
+            type: Array,
+            default() {
+                return [];
+            }
+        },
         showSidebar: {
             type: Boolean,
             default: false
+        },
+        userData: {
+            type: Object,
+            required: true
         }
     }
 };
@@ -57,14 +85,8 @@ export default {
     align-items: inherit;
     padding: 0;
 
-    .sidebar-toggle {
-        max-width: 70px;
-        background-color: var(--base-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 23px;
-        order: 0;
+    .left-side-header {
+        padding-left: 70px;
     }
 
     .notifications-center {

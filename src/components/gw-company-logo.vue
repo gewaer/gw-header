@@ -1,25 +1,28 @@
 <template>
     <router-link :to="{ name: 'dashboard'}" class="app-logo">
         <img
-            v-if="companyData.profile_image"
-            :src="companyData.profile_image"
-            :alt="companyData.name"
+            v-if="companyLogo"
+            :src="companyLogo"
+            :alt="companyName"
         >
         <div v-else class="company-name">
-            {{ companyData.name }}
+            {{ companyName }}
         </div>
     </router-link>
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 export default {
     name: "GwCompanyLogo",
-    computed: {
-        ...mapState({
-            companyData: state => state.Company.data || {}
-        })
+    props: {
+        companyLogo: {
+            type: String,
+            default: ""
+        },
+        companyName: {
+            type: String,
+            required: true
+        }
     }
 }
 </script>

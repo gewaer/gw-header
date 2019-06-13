@@ -1,17 +1,16 @@
 {
   "name": "@gewaer/gw-header",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Base header component for the Gewaer platform.",
   "main": "./dist/gw-header.umd.min.js",
   "files": [
     "dist/gw-header.umd.min.js",
-    "dist/gw-header.css",
-    "src/assets"
+    "dist/gw-header.css"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "bundle": "vue-cli-service build --target lib --name gw-header ./src/index.vue",
+    "bundle": "vue-cli-service build --target lib --name gw-header ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "keywords": [
@@ -28,8 +27,7 @@
     "lint"
   ],
   "dependencies": {
-    "vue": "^2.6.8",
-    "vuex": "^3.0.1"
+    "vue": "^2.6.8"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",

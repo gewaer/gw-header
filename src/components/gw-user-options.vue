@@ -15,7 +15,7 @@
                 <span>Users Settings</span>
             </router-link>
             <router-link :to="{ name: 'settingsCompaniesProfile' }">
-                <span>{{ companyName }} Settings</span>
+                <span>{{ companyData.name }} Settings</span>
             </router-link>
             <router-link :to="{ name: 'settingsAppsCustomFieldsList' }">
                 <span>App Settings</span>
@@ -32,15 +32,17 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 export default {
     name: "GwUserOptions",
-    computed: {
-        ...mapState({
-            companyName: state => state.Company.data && state.Company.data.name,
-            userData: state => state.User.data
-        })
+    props: {
+        companyData: {
+            type: Object,
+            required: true
+        },
+        userData: {
+            type: Object,
+            required: true
+        }
     },
     methods: {
         logout() {
