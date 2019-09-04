@@ -4,13 +4,20 @@
         class="notification-sidebar header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin"
         @click="$emit('toggle-notifications')"
     >
-        <div class="notification-badge bg-danger">1</div>
+        <div class="notification-badge bg-danger">{{ notifications.total_notifications || 0 }}</div>
     </a>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-    name: "GwNotifications"
+    name: "GwNotifications",
+    computed: {
+        ...mapState({
+            notifications: state => state.Notifications.notifications
+        })
+    }
 }
 </script>
 
