@@ -1,6 +1,6 @@
 <template>
     <div class="header app-header">
-        <div @click="$emit('handle-sidebar')" class="sidebar-toggle">
+        <div class="sidebar-toggle" @click="$emit('handle-sidebar')">
             <img src="/img/icons/hamburguer-menu.png">
         </div>
         <div class="header-container">

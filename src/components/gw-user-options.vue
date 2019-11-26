@@ -1,5 +1,9 @@
 <template>
-    <dropdown :x="userDropdownCoordenates.x" :y="userDropdownCoordenates.y" :is-icon="false" class="user-bar">
+    <dropdown 
+        :x="userDropdownCoordenates.x" 
+        :y="userDropdownCoordenates.y" 
+        :is-icon="false" 
+        class="user-bar">
         <template slot="btn">
             <div class="user-name">
                 <span class="bold">{{ userData.firstname }}</span>
@@ -53,7 +57,7 @@ export default {
             userDropdownCoordenates: {
                 x: -45,
                 y: 0
-            },
+            }
         };
     },
     created() {
