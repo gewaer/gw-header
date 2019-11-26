@@ -1,11 +1,11 @@
 <template>
-    <a
-        href="#"
-        class="notification-sidebar header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin"
+    <div
+        class="notification-badge"
         @click.prevent="$emit('toggle-notifications')"
     >
-        <div class="notification-badge bg-danger">1</div>
-    </a>
+        <span class="notification-bubble" />
+        <i class="fas fa-bell"></i>
+    </div>
 </template>
 
 <script>
@@ -15,33 +15,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.notification-sidebar {
-    order: 6;
+.notification-badge {
     display: flex;
     align-items: center;
-    margin-right: 20px;
     position: relative;
+    font-size: 20px;
+    color: #A4AFB7;
+    cursor: pointer;
+    margin-left: 20px;
 
-    .notification-badge {
-        width: 20px;
-        height: 20px;
+    .notification-bubble {
         position: absolute;
-        top: 12px;
-        right: -14px;
+        width: 13px;
+        height: 13px;
         border-radius: 100%;
-        color: white;
+        background-color: red;
         display: flex;
         align-items: center;
         justify-content: center;
-        line-height: 0;
-        font-size: 14px;
-        font-weight: 500;
-        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+        border: 2px solid white;
+        right: -4px;
+        top: 0;
     }
 }
 
 @media(max-width: 992px) {
-    .notification-sidebar {
+    .notification-badge {
         display: none;
     }
 }

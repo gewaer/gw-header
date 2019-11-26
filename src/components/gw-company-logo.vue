@@ -29,11 +29,12 @@ export default {
 
 <style lang="scss" scoped>
 .app-logo {
-    padding: 5px 25px;
     order: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+
 
     img {
         max-height: 30px;
@@ -42,23 +43,24 @@ export default {
     .company-name {
         text-transform: uppercase;
         font-size: 28px;
-        font-weight: 500;
+        font-weight: 700;
+        letter-spacing: 3.2px;
+        font-family: 'Lato', sans-serif;
+        color: #4B4B4B;
     }
 }
 
 @media(max-width: 992px) {
     .app-logo {
-        order: 2;
         margin-right: auto;
         margin-left: auto;
         padding: 0;
-        padding-left: 10px;
     }
 }
 
 @media screen and (max-width: 475px) {
-    .app-logo {
-        display: none;
-    }
+    // .app-logo {
+    //     display: none;
+    // }
 }
 </style>

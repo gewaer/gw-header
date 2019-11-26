@@ -1,12 +1,11 @@
 <template>
-    <div v-if="showSwitcher" class="multi-rooftop">
+    <div v-if="showSwitcher" class="company-switcher">
         <multiselect
             :allow-empty="false"
             :options="companiesList"
             :searchable="false"
             :show-labels="false"
-            :value="companyData"
-            class="rooftop-select"
+            :value="companyData.branch"
             group-values="branches"
             group-label="name"
             label="name"
@@ -43,16 +42,68 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.multi-rooftop {
+<style lang="scss">
+.company-switcher {
     display: flex;
     align-items: center;
-    padding: 0 15px;
     order: 4;
+    position: relative;
+    margin-left: 20px;
+
+    .multiselect {
+        .multiselect__select {
+            font-family: "Font Awesome 5 Pro";
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+
+            &::before {
+                border-width: 0;
+                content: "\f14d";
+                top: initial;
+                margin-top: 0;
+                color: var(--base-color);
+                z-index: 1;
+            }
+        }
+
+        .multiselect__tags {
+            border: 0;
+            display: flex;
+            align-items: center;
+            padding-top: 0;
+            padding-left: 0;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                height: 80%;
+                width: 1px;
+                background-color: #A5A5A5;
+                z-index: 1;
+            }
+
+            .multiselect__single {
+                text-transform: capitalize;
+                color: var(--base-color);
+                margin-bottom: 0;
+                padding-left: 20px;
+            }
+        }
+
+        &.multiselect--active {
+            .multiselect__select {
+                transform: rotate(0);
+            }
+        }
+    }
 }
 
 @media(max-width: 992px) {
-    .multi-rooftop {
+    .company-switcher {
         padding: 0 5px;
 
         /deep/ .multiselect {
