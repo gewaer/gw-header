@@ -7,7 +7,7 @@
                     :company-name="companyData.name"
                 />
             </slot>
-            <!-- <gw-app-switcher /> -->
+            <gw-app-switcher v-if="false" />
         </div>
         <div class="right-side-header d-flex">
             <slot name="companies-switcher">
