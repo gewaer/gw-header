@@ -4,13 +4,19 @@
         class="notification-sidebar header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin"
         @click.prevent="$emit('toggle-notifications')"
     >
-        <div class="notification-badge bg-danger">1</div>
+        <div v-show="count > 0" class="notification-badge bg-danger">{{ count }}</div>
     </a>
 </template>
 
 <script>
 export default {
-    name: "GwNotifications"
+    name: "GwNotifications",
+    props: {
+        count: {
+            type: Number,
+            required: true
+        }
+    }
 }
 </script>
 

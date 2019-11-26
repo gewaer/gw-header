@@ -22,6 +22,7 @@
                 :user-data="userData"
             />
             <gw-notifications
+                :count="notificationsCount"
                 @toggle-notifications="$emit('toggle-notifications')"
             />
         </div>
@@ -57,6 +58,10 @@ export default {
             default() {
                 return [];
             }
+        },
+        notificationsCount: {
+            type: Number,
+            required: true
         },
         showSidebar: {
             type: Boolean,
