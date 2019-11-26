@@ -59,8 +59,8 @@ export default {
 }
 
 @media screen and (max-width: 475px) {
-    // .app-logo {
-    //     display: none;
-    // }
+    .app-logo {
+        display: none;
+    }
 }
 </style>

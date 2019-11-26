@@ -1,12 +1,12 @@
 <template>
-    <dropdown :x="-45" :is-icon="false" class="user-bar">
+    <dropdown :x="userDropdownCoordenates.x" :y="userDropdownCoordenates.y" :is-icon="false" class="user-bar">
         <template slot="btn">
             <div class="user-name">
                 <span class="bold">{{ userData.firstname }}</span>
                 <span> {{ userData.lastname }}</span>
             </div>
             <slot name="icon">
-                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down"/>
             </slot>
             <div class="profile-image">
                 <img v-if="userData.profile_image" :src="userData.profile_image">
@@ -15,21 +15,21 @@
         </template>
         <template slot="body">
             <span class="dropdown-title">My Profile</span>
-            <router-link class="dropdown-item" :to="{ name: 'settingsUsersProfile' }">
+            <router-link :to="{ name: 'settingsUsersProfile' }" class="dropdown-item">
                 <span>Users Settings</span>
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'settingsCompaniesProfile' }">
+            <router-link :to="{ name: 'settingsCompaniesProfile' }" class="dropdown-item">
                 <span>{{ companyData.name }} Settings</span>
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'settingsAppsCustomFieldsList' }">
+            <router-link :to="{ name: 'settingsAppsCustomFieldsList' }" class="dropdown-item">
                 <span>App Settings</span>
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'settingsManagerList' }">
+            <router-link :to="{ name: 'settingsManagerList' }" class="dropdown-item">
                 <span>Companies Manager</span>
             </router-link>
             <a href="#" class="dropdown-item logout-button" @click.prevent="logout()">
                 <span>Logout</span>
-                <i class="fas fa-sign-out-alt"></i>
+                <i class="fas fa-sign-out-alt"/>
             </a>
         </template>
     </dropdown>
@@ -48,7 +48,23 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            userDropdownCoordenates: {
+                x: -45,
+                y: 0
+            },
+        };
+    },
+    created() {
+        this.handleUserDropdownCoordenates();
+    },
     methods: {
+        handleUserDropdownCoordenates() {
+            if (window.innerWidth <= 768) {
+                this.userDropdownCoordenates.x = -145;
+            }
+        },
         logout() {
             axios({
                 method: "PUT",

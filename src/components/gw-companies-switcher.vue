@@ -84,6 +84,10 @@ export default {
                 width: 1px;
                 background-color: #A5A5A5;
                 z-index: 1;
+
+                @media (max-width: 475px) {
+                    display: none;
+                }
             }
 
             .multiselect__single {
@@ -91,6 +95,10 @@ export default {
                 color: var(--base-color);
                 margin-bottom: 0;
                 padding-left: 20px;
+
+                @media (max-width: 475px) {
+                    padding-left: 0;
+                }
             }
         }
 
@@ -112,9 +120,15 @@ export default {
                 width: 100%;
                 left: 0;
                 border: 0;
-                margin-top: 10px;
+                background-color: white;
             }
         }
+    }
+}
+
+@media (max-width: $sm) {
+    .company-switcher {
+        margin-left: 5px;
     }
 }
 </style>

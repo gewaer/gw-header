@@ -4,7 +4,7 @@
         @click.prevent="$emit('toggle-notifications')"
     >
         <span class="notification-bubble" />
-        <i class="fas fa-bell"></i>
+        <i class="fas fa-bell"/>
     </div>
 </template>
 

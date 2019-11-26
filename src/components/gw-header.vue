@@ -1,5 +1,8 @@
 <template>
     <div class="header app-header">
+        <div @click="$emit('handle-sidebar')" class="sidebar-toggle">
+            <img src="/img/icons/hamburguer-menu.png">
+        </div>
         <div class="header-container">
             <div class="left-side-header d-flex">
                 <slot name="company-logo">
@@ -83,6 +86,7 @@ export default {
     border-bottom: 1px solid #e6e6e6;
     padding: 0;
     padding-left: 70px;
+    display: flex;
 
     @media (max-width: $lg) {
         padding-left: 0;
@@ -97,14 +101,34 @@ export default {
         margin-left: auto;
         padding-left: 30px;
         padding-right: 30px;
+        flex: 1;
 
         @media (min-width: 1824px) {
             width: 1700px;
         }
+
+        @media (max-width: $lg) {
+            padding-left: 0;
+        }
+
+        @media (max-width: $sm) {
+            padding-right: 10px;
+        }
     }
 
-    .left-side-header {
-        // padding-left: 70px;
+    .sidebar-toggle {
+        display: none;
+
+        @media (max-width: $lg) {
+            cursor: pointer;
+            display: flex;
+            width: 59px;
+            height: 100%;
+            background-color: var(--base-color);
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
     }
 
     .notifications-center {
