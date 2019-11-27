@@ -10,7 +10,13 @@
 
 <script>
 export default {
-    name: "GwNotifications"
+    name: "GwNotifications",
+    props: {
+        count: {
+            type: Number,
+            required: true
+        }
+    }
 }
 </script>
 

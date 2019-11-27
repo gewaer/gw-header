@@ -62,6 +62,10 @@ export default {
                 return [];
             }
         },
+        notificationsCount: {
+            type: Number,
+            required: true
+        },
         showSidebar: {
             type: Boolean,
             default: false
