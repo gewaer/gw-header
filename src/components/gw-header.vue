@@ -1,30 +1,36 @@
 <template>
     <div class="header app-header">
-        <div class="left-side-header d-flex">
-            <slot name="company-logo">
-                <gw-company-logo
-                    :company-logo="companyData.profile_image"
-                    :company-name="companyData.name"
-                />
-            </slot>
-            <gw-app-switcher v-if="false" />
+        <div class="sidebar-toggle" @click="$emit('handle-sidebar')">
+            <img src="/img/icons/hamburguer-menu.png">
         </div>
-        <div class="right-side-header d-flex">
-            <slot name="companies-switcher">
-                <gw-companies-switcher
+        <div class="header-container">
+            <div class="left-side-header d-flex">
+                <slot name="company-logo">
+                    <gw-company-logo
+                        :company-logo="companyData.profile_image"
+                        :company-name="companyData.name"
+                    />
+                </slot>
+                <slot name="app-switcher">
+                    <gw-app-switcher v-if="false" />
+                </slot>
+                <slot name="companies-switcher">
+                    <gw-companies-switcher
+                        :company-data="companyData"
+                        :companies-list="companiesList"
+                        @select="company => $emit('selected-company', company)"
+                    />
+                </slot>
+            </div>
+            <div class="right-side-header d-flex">
+                <gw-user-options
                     :company-data="companyData"
-                    :companies-list="companiesList"
-                    @select="company => $emit('selected-company', company)"
+                    :user-data="userData"
                 />
-            </slot>
-            <gw-user-options
-                :company-data="companyData"
-                :user-data="userData"
-            />
-            <gw-notifications
-                :count="notificationsCount"
-                @toggle-notifications="$emit('toggle-notifications')"
-            />
+                <gw-notifications
+                    @toggle-notifications="$emit('toggle-notifications')"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -81,17 +87,55 @@ export default {
     left: 0;
     top: 0;
     z-index: 1000;
-    display: flex;
     height: 60px;
     width: 100%;
     background-color: #fff;
     border-bottom: 1px solid #e6e6e6;
-    justify-content: space-between;
-    align-items: inherit;
     padding: 0;
+    padding-left: 70px;
+    display: flex;
 
-    .left-side-header {
-        padding-left: 70px;
+    @media (max-width: 991px) {
+        padding-left: 0;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 30px;
+        padding-right: 30px;
+        flex: 1;
+
+        @media (min-width: 1824px) {
+            width: 1700px;
+        }
+
+        @media (max-width: 991px) {
+            padding-left: 0;
+        }
+
+        @media (max-width: 576px) {
+            padding-right: 10px;
+        }
+    }
+
+    .sidebar-toggle {
+        display: none;
+
+        @media (max-width: 991px) {
+            cursor: pointer;
+            display: flex;
+            width: 59px;
+            height: 100%;
+            background-color: var(--base-color);
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
     }
 
     .notifications-center {
