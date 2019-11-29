@@ -1,16 +1,17 @@
 <template>
-    <dropdown 
-        :x="userDropdownCoordenates.x" 
-        :y="userDropdownCoordenates.y" 
-        :is-icon="false" 
-        class="user-bar">
+    <dropdown
+        :x="userDropdownCoordenates.x"
+        :y="userDropdownCoordenates.y"
+        :is-icon="false"
+        class="user-bar"
+    >
         <template slot="btn">
             <div class="user-name">
                 <span class="bold">{{ userData.firstname }}</span>
                 <span> {{ userData.lastname }}</span>
             </div>
             <slot name="icon">
-                <i class="fas fa-chevron-down"/>
+                <i class="fas fa-chevron-down" />
             </slot>
             <div class="profile-image">
                 <img v-if="userData.profile_image" :src="userData.profile_image">
@@ -33,7 +34,7 @@
             </router-link>
             <a href="#" class="dropdown-item logout-button" @click.prevent="logout()">
                 <span>Logout</span>
-                <i class="fas fa-sign-out-alt"/>
+                <i class="fas fa-sign-out-alt" />
             </a>
         </template>
     </dropdown>

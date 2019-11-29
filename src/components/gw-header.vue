@@ -11,6 +11,9 @@
                         :company-name="companyData.name"
                     />
                 </slot>
+                <slot name="app-switcher">
+                    <gw-app-switcher v-if="false" />
+                </slot>
                 <slot name="companies-switcher">
                     <gw-companies-switcher
                         :company-data="companyData"
@@ -92,7 +95,7 @@ export default {
     padding-left: 70px;
     display: flex;
 
-    @media (max-width: $lg) {
+    @media (max-width: 991px) {
         padding-left: 0;
     }
 
@@ -111,11 +114,11 @@ export default {
             width: 1700px;
         }
 
-        @media (max-width: $lg) {
+        @media (max-width: 991px) {
             padding-left: 0;
         }
 
-        @media (max-width: $sm) {
+        @media (max-width: 576px) {
             padding-right: 10px;
         }
     }
@@ -123,7 +126,7 @@ export default {
     .sidebar-toggle {
         display: none;
 
-        @media (max-width: $lg) {
+        @media (max-width: 991px) {
             cursor: pointer;
             display: flex;
             width: 59px;

@@ -126,7 +126,7 @@ export default {
     }
 }
 
-@media (max-width: $sm) {
+@media (max-width: 576px) {
     .company-switcher {
         margin-left: 5px;
     }
