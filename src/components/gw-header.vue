@@ -28,6 +28,7 @@
                     :user-data="userData"
                 />
                 <gw-notifications
+                    :count="notificationsCount"
                     @toggle-notifications="$emit('toggle-notifications')"
                 />
             </div>
