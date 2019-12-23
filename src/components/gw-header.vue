@@ -16,6 +16,7 @@
                 </slot>
                 <slot name="companies-switcher">
                     <gw-companies-switcher
+                        :branch-data="companyBranchData"
                         :company-data="companyData"
                         :companies-list="companiesList"
                         @select="company => $emit('selected-company', company)"
@@ -53,6 +54,10 @@ export default {
         GwUserOptions
     },
     props: {
+        companyBranchData: {
+            type: Object,
+            required: true
+        },
         companyData: {
             type: Object,
             required: true,

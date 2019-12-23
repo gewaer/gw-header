@@ -5,7 +5,7 @@
             :options="companiesList"
             :searchable="false"
             :show-labels="false"
-            :value="companyData.branch"
+            :value="branchData"
             group-values="branches"
             group-label="name"
             label="name"
@@ -24,6 +24,10 @@ export default {
     name: "GwCompaniesSwitcher",
     props: {
         companyData: {
+            type: Object,
+            required: true
+        },
+        branchData: {
             type: Object,
             required: true
         },
