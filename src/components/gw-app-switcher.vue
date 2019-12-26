@@ -2,7 +2,7 @@
     <dropdown :is-icon="false" class="app-switcher">
         <template slot="btn">
             <span class="app-mode">Apps</span>
-            <i class="fas fa-th"></i>
+            <i class="fas fa-th"/>
         </template>
         <template slot="body">
             <a href="#" target="_blank" class="dropdown-item">
