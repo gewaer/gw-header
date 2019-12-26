@@ -4,16 +4,7 @@
             <img src="/img/icons/hamburguer-menu.png">
         </div>
         <div class="header-container">
-            <div class="left-side-header d-flex">
-                <slot name="company-logo">
-                    <gw-company-logo
-                        :company-logo="companyData.profile_image"
-                        :company-name="companyData.name"
-                    />
-                </slot>
-                <slot name="app-switcher">
-                    <gw-app-switcher v-if="false" />
-                </slot>
+            <div class="left-side-header d-flex h-100">
                 <slot name="companies-switcher">
                     <gw-companies-switcher
                         :branch-data="companyBranchData"
@@ -21,6 +12,9 @@
                         :companies-list="companiesList"
                         @select="company => $emit('selected-company', company)"
                     />
+                </slot>
+                <slot name="app-switcher">
+                    <gw-app-switcher />
                 </slot>
             </div>
             <div class="right-side-header d-flex">
