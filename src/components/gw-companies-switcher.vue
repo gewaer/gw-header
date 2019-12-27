@@ -50,9 +50,8 @@ export default {
 .company-switcher {
     display: flex;
     align-items: center;
-    order: 4;
     position: relative;
-    margin-left: 20px;
+    margin-right: 10px;
 
     .multiselect {
         .multiselect__select {
@@ -65,10 +64,10 @@ export default {
 
             &::before {
                 border-width: 0;
-                content: "\f14d";
+                content: "\f078";
                 top: initial;
                 margin-top: 0;
-                color: var(--base-color);
+                color: #4B4B4B;
                 z-index: 1;
             }
         }
@@ -81,28 +80,14 @@ export default {
             padding-left: 0;
             position: relative;
 
-            &::before {
-                content: "";
-                position: absolute;
-                height: 80%;
-                width: 1px;
-                background-color: #A5A5A5;
-                z-index: 1;
-
-                @media (max-width: 475px) {
-                    display: none;
-                }
-            }
-
             .multiselect__single {
-                text-transform: capitalize;
-                color: var(--base-color);
                 margin-bottom: 0;
-                padding-left: 20px;
-
-                @media (max-width: 475px) {
-                    padding-left: 0;
-                }
+                text-transform: uppercase;
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: 3.2px;
+                font-family: 'Lato', sans-serif;
+                color: #4B4B4B;
             }
         }
 
