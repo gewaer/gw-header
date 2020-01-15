@@ -1,6 +1,7 @@
 <template>
-    <div v-if="showSwitcher" class="company-switcher">
+    <div class="company-switcher">
         <multiselect
+            :disabled="!shouldActivateSwitcher"
             :allow-empty="false"
             :options="companiesList"
             :searchable="false"
@@ -39,7 +40,7 @@ export default {
         }
     },
     computed: {
-        showSwitcher() {
+        shouldActivateSwitcher() {
             return this.companiesList.length > 1 || this.companyData.branches && this.companyData.branches.length > 1;
         }
     }
@@ -94,6 +95,19 @@ export default {
         &.multiselect--active {
             .multiselect__select {
                 transform: rotate(0);
+            }
+        }
+
+        &.multiselect--disabled {
+            background: initial;
+            opacity: 1;
+
+            .multiselect__select {
+                display: none;
+            }
+
+            .multiselect__tags {
+                padding-right: 10px;
             }
         }
     }

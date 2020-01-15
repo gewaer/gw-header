@@ -50,6 +50,7 @@ export default {
             display: block;
             text-align: center;
             margin-right: 10px;
+            margin-bottom: 2px;
         }
     }
 }
