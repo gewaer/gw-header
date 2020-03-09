@@ -1,33 +1,42 @@
 <template>
-    <dropdown :x="-45" class="user-bar">
+    <dropdown
+        :x="userDropdownCoordenates.x"
+        :y="userDropdownCoordenates.y"
+        :is-icon="false"
+        class="user-bar"
+    >
         <template slot="btn">
             <div class="user-name">
                 <span class="bold">{{ userData.firstname }}</span>
                 <span> {{ userData.lastname }}</span>
             </div>
+            <slot name="icon">
+                <i class="fas fa-chevron-down" />
+            </slot>
             <div class="profile-image">
                 <img v-if="userData.profile_image" :src="userData.profile_image">
                 <img v-else src="../assets/icons/avatar-icon.png">
             </div>
         </template>
-        <ul slot="body" class="profile-dropdown" role="menu">
-            <router-link :to="{ name: 'settingsUsersProfile' }">
+        <template slot="body">
+            <span class="dropdown-title">My Profile</span>
+            <router-link :to="{ name: 'settingsUsersProfile' }" class="dropdown-item">
                 <span>Users Settings</span>
             </router-link>
-            <router-link :to="{ name: 'settingsCompaniesProfile' }">
+            <router-link :to="{ name: 'settingsCompaniesProfile' }" class="dropdown-item">
                 <span>{{ companyData.name }} Settings</span>
             </router-link>
-            <router-link :to="{ name: 'settingsAppsCustomFieldsList' }">
+            <router-link :to="{ name: 'settingsAppsCustomFieldsList' }" class="dropdown-item">
                 <span>App Settings</span>
             </router-link>
-            <router-link :to="{ name: 'settingsManagerList' }">
+            <router-link :to="{ name: 'settingsManagerList' }" class="dropdown-item">
                 <span>Companies Manager</span>
             </router-link>
-            <a href="#" @click.prevent="logout()">
+            <a href="#" class="dropdown-item logout-button" @click.prevent="logout()">
                 <span>Logout</span>
-                <i class="pg-power" />
+                <i class="fas fa-sign-out-alt" />
             </a>
-        </ul>
+        </template>
     </dropdown>
 </template>
 
@@ -44,7 +53,23 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            userDropdownCoordenates: {
+                x: -45,
+                y: 0
+            }
+        };
+    },
+    created() {
+        this.handleUserDropdownCoordenates();
+    },
     methods: {
+        handleUserDropdownCoordenates() {
+            if (window.innerWidth <= 768) {
+                this.userDropdownCoordenates.x = -145;
+            }
+        },
         logout() {
             axios({
                 method: "PUT",
@@ -60,23 +85,27 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .user-bar {
-    background-color: #ededed;
     display: flex;
     height: 100%;
     align-items: center;
-    padding: 0 20px;
-    order: 5;
 
     .user-name {
-        margin-right: 10px;
+        margin-right: 15px;
         text-transform: capitalize;
+        font-family: 'Source Sans Pro', sans-serif;
+        color: #4D4F5C;
+    }
+
+    .fa-chevron-down {
+        color:#A4AFB7;
+        margin-right: 10px;
     }
 
     .profile-image {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -88,16 +117,18 @@ export default {
         }
     }
 
-    .profile-dropdown {
-        a {
-            display: flex;
-            align-items: center;
-            margin-top: 0;
-            padding: 5px 10px;
-            text-transform: capitalize;
+    .logout-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-            i {
-                margin-left: 5px;
+        * {
+            color: var(--secondary-color);
+        }
+
+        &:hover {
+            * {
+                color: inherit;
             }
         }
     }
