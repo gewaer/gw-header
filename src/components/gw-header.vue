@@ -34,7 +34,6 @@
 <script type="text/javascript">
 import GwAppSwitcher from "./gw-app-switcher";
 import GwCompaniesSwitcher from "./gw-companies-switcher";
-import GwCompanyLogo from "./gw-company-logo";
 import GwNotifications from "./gw-notifications";
 import GwUserOptions from "./gw-user-options";
 
@@ -43,7 +42,6 @@ export default {
     components: {
         GwAppSwitcher,
         GwCompaniesSwitcher,
-        GwCompanyLogo,
         GwNotifications,
         GwUserOptions
     },
