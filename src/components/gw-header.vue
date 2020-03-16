@@ -13,7 +13,7 @@
                         @select="company => $emit('selected-company', company)"
                     />
                 </slot>
-                <slot name="app-switcher">
+                <slot name="app-switcher" v-if="showAppSwitcher">
                     <gw-app-switcher />
                 </slot>
             </div>
@@ -21,6 +21,7 @@
                 <gw-user-options
                     :company-data="companyData"
                     :user-data="userData"
+                    :links="userOptionLinks"
                 />
                 <gw-notifications
                     :count="notificationsCount"
@@ -71,9 +72,16 @@ export default {
             type: Boolean,
             default: false
         },
+        showAppSwitcher: {
+            type: Boolean,
+            default: true
+        },
         userData: {
             type: Object,
             required: true
+        },
+        userOptionLinks: {
+            type: [Array, null]
         }
     }
 };

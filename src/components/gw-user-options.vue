@@ -20,17 +20,8 @@
         </template>
         <template slot="body">
             <span class="dropdown-title">My Profile</span>
-            <router-link :to="{ name: 'settingsUsersProfile' }" class="dropdown-item">
-                <span>Users Settings</span>
-            </router-link>
-            <router-link :to="{ name: 'settingsCompaniesProfile' }" class="dropdown-item">
-                <span>{{ companyData.name }} Settings</span>
-            </router-link>
-            <router-link :to="{ name: 'settingsAppsCustomFieldsList' }" class="dropdown-item">
-                <span>App Settings</span>
-            </router-link>
-            <router-link :to="{ name: 'settingsManagerList' }" class="dropdown-item">
-                <span>Companies Manager</span>
+            <router-link  v-for="item in dropdownOptionsVisible" :key="item.name" :to="{ name: item.name }" class="dropdown-item">
+                <span> {{ item.label }}</span>
             </router-link>
             <a href="#" class="dropdown-item logout-button" @click.prevent="logout()">
                 <span>Logout</span>
@@ -51,6 +42,17 @@ export default {
         userData: {
             type: Object,
             required: true
+        },
+        links: {
+            type: [Array, null],
+            default() {
+                return [
+                    "settingsUsersProfile",
+                    "settingsCompaniesProfile",
+                    "settingsAppsCustomFieldsList",
+                    "settingsManagerList"
+                ]
+            }
         }
     },
     data() {
@@ -58,8 +60,34 @@ export default {
             userDropdownCoordenates: {
                 x: -45,
                 y: 0
-            }
+            },
+            
         };
+    },
+    computed: {
+        dropdownOptionsAvailable() { 
+            return [
+                {
+                    name: "settingsUsersProfile",
+                    label: "Users Settings"
+                }, 
+                {
+                    name: "settingsCompaniesProfile",
+                    label: `${this.companyData.name} Settings`
+                },
+                {
+                    name: "settingsAppsCustomFieldsList",
+                    label: "App settings"
+                },
+                {
+                   name: "settingsManagerList",
+                   label: "Companies Manager"
+                }
+            ]
+        },
+        dropdownOptionsVisible() {
+            return this.dropdownOptionsAvailable.filter(item => this.links.includes(item.name))
+        }
     },
     created() {
         this.handleUserDropdownCoordenates();
