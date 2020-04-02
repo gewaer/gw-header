@@ -92,6 +92,10 @@ export default {
             }
         }
 
+        .multiselect__content-wrapper {
+            width: auto;
+        }
+
         &.multiselect--active {
             .multiselect__select {
                 transform: rotate(0);
