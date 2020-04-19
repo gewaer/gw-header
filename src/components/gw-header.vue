@@ -1,5 +1,8 @@
 <template>
-    <div class="header app-header">
+    <div
+        :class="{ 'menu-pinned': sidebarState == 'opened' }"
+        class="header app-header"
+    >
         <div class="sidebar-toggle" @click="$emit('handle-sidebar')">
             <img src="/img/icons/hamburguer-menu.png">
         </div>
@@ -71,6 +74,10 @@ export default {
             type: Boolean,
             default: false
         },
+        sidebarState: {
+            type: String,
+            default: "hover"
+        },
         userData: {
             type: Object,
             required: true
@@ -92,6 +99,10 @@ export default {
     padding: 0;
     padding-left: 70px;
     display: flex;
+
+    &.menu-pinned  {
+        padding-left: 280px;
+    }
 
     @media (max-width: 991px) {
         padding-left: 0;
