@@ -23,13 +23,25 @@
             <router-link :to="{ name: 'settingsUsersProfile' }" class="dropdown-item">
                 <span>Users Settings</span>
             </router-link>
-            <router-link :to="{ name: 'settingsCompaniesProfile' }" class="dropdown-item">
+            <router-link
+                v-if="$can('company-settings', 'settingsmenu')"
+                :to="{ name: 'settingsCompaniesProfile' }"
+                class="dropdown-item"
+            >
                 <span>{{ companyData.name }} Settings</span>
             </router-link>
-            <router-link :to="{ name: 'settingsAppsCustomFieldsList' }" class="dropdown-item">
+            <router-link
+                v-if="$can('app-settings', 'settingsmenu')"
+                :to="{ name: 'settingsAppsCustomFieldsList' }"
+                class="dropdown-item"
+            >
                 <span>App Settings</span>
             </router-link>
-            <router-link :to="{ name: 'settingsManagerList' }" class="dropdown-item">
+            <router-link
+                v-if="$can('companies-manager', 'settingsmenu')"
+                :to="{ name: 'settingsManagerList' }"
+                class="dropdown-item"
+            >
                 <span>Companies Manager</span>
             </router-link>
             <a href="#" class="dropdown-item logout-button" @click.prevent="logout()">

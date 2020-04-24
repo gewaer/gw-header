@@ -17,7 +17,10 @@
                     />
                 </slot>
                 <slot name="app-switcher">
-                    <gw-app-switcher />
+                    <gw-app-switcher
+                        v-if="appsList.length"
+                        :apps-list="appsList"
+                    />
                 </slot>
             </div>
             <div class="right-side-header d-flex">
@@ -49,6 +52,12 @@ export default {
         GwUserOptions
     },
     props: {
+        appsList: {
+            type: Array,
+            default() {
+                return [];
+            }
+        },
         companyBranchData: {
             type: Object,
             required: true
