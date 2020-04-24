@@ -18,7 +18,7 @@
                 </slot>
                 <slot name="app-switcher">
                     <gw-app-switcher
-                        v-if="appsList.length"
+                        v-if="appsList.length > 1"
                         :apps-list="appsList"
                     />
                 </slot>
@@ -29,6 +29,7 @@
                     :user-data="userData"
                 />
                 <gw-notifications
+                    v-if="showNotifications"
                     :count="notificationsCount"
                     @toggle-notifications="$emit('toggle-notifications')"
                 />
@@ -78,6 +79,10 @@ export default {
         notificationsCount: {
             type: Number,
             required: true
+        },
+        showNotifications: {
+            type: Boolean,
+            default: true
         },
         showSidebar: {
             type: Boolean,
