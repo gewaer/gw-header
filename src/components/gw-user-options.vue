@@ -14,7 +14,7 @@
                 <i class="fas fa-chevron-down" />
             </slot>
             <div class="profile-image">
-                <img v-if="userData.profile_image" :src="userData.profile_image">
+                <img v-if="userData.photo" :src="userData.photo.url">
                 <img v-else src="../assets/icons/avatar-icon.png">
             </div>
         </template>
@@ -124,6 +124,8 @@ export default {
 
         img {
             width: 100%;
+            min-width: 100%;
+            min-height: 100%;
             border-radius: 100%;
             height: initial;
         }
