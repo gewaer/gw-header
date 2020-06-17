@@ -8,8 +8,7 @@ export {
     GwAppSwitcher,
     GwCompaniesSwitcher,
     GwNotifications,
-    GwUserOptions,
-    GwHeader
+    GwUserOptions
 }
 
 export default GwHeader;
