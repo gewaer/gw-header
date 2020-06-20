@@ -20,30 +20,19 @@
         </template>
         <template slot="body">
             <span class="dropdown-title">My Profile</span>
-            <router-link :to="{ name: 'settingsUsersProfile' }" class="dropdown-item">
-                <span>Users Settings</span>
-            </router-link>
-            <router-link
-                v-if="$can('company-settings', 'settingsmenu')"
-                :to="{ name: 'settingsCompaniesProfile' }"
-                class="dropdown-item"
+            <template
+                v-for="option in userOptionsList" 
             >
-                <span>{{ companyData.name }} Settings</span>
-            </router-link>
-            <router-link
-                v-if="$can('app-settings', 'settingsmenu')"
-                :to="{ name: 'settingsAppsCustomFieldsList' }"
-                class="dropdown-item"
-            >
-                <span>App Settings</span>
-            </router-link>
-            <router-link
-                v-if="$can('companies-manager', 'settingsmenu')"
-                :to="{ name: 'settingsManagerList' }"
-                class="dropdown-item"
-            >
-                <span>Companies Manager</span>
-            </router-link>
+                <router-link 
+                    v-if="!option.validateAcl || $can(option.name, 'settingsmenu')" 
+                    :key="option.route" 
+                    :to="{ name: option.route }"
+                    class="dropdown-item"
+                >
+                    <span> {{ option.label }} </span>
+                </router-link>
+            </template>
+
             <a href="#" class="dropdown-item logout-button" @click.prevent="logout()">
                 <span>Logout</span>
                 <i class="fas fa-sign-out-alt" />
@@ -63,6 +52,12 @@ export default {
         userData: {
             type: Object,
             required: true
+        },
+        userDropdownMapper: {
+            type: Object,
+            default() {
+                return {}
+            }
         }
     },
     data() {
@@ -70,8 +65,42 @@ export default {
             userDropdownCoordenates: {
                 x: -45,
                 y: 0
-            }
+            },
+            userDropdownOptions: [
+                {
+                    name: "user-settings",
+                    label: "Users Settings",
+                    route: "settingsCompaniesProfile"
+                }, 
+                {
+                    label: "{company} Settings",
+                    route: "settingsCompaniesProfile",
+                    name: "companies-settings",
+                    validateAcl: true
+                },
+                {
+                    label: "App Settings",
+                    route: "settingsAppsCustomFieldsList",
+                    name: "app-settings",
+                    validateAcl: true
+                },
+                {
+                    label: "Companies Manager",
+                    route: "settingsManagerList",
+                    name: "companies-manager",
+                    validateAcl: true
+                }
+            ]
         };
+    },
+    computed: {
+        userOptionsList() {
+            return this.userDropdownOptions.map(item => {
+                const label = this.userDropdownMapper[item.name] || item.label
+                item.label = label.replace("{company}", this.companyData.name)
+                return item
+            })
+        }
     },
     created() {
         this.handleUserDropdownCoordenates();
@@ -82,6 +111,7 @@ export default {
                 this.userDropdownCoordenates.x = -145;
             }
         },
+
         logout() {
             axios({
                 method: "PUT",
