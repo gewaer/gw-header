@@ -28,7 +28,7 @@
                     v-if="showUserOptions"
                     :company-data="companyData"
                     :user-data="userData"
-                    :user-dropdown-mapper="userDropdownMapper"
+                    :user-dropdown-mapper="dropdownMapper"
                 />
                 <gw-notifications
                     v-if="showNotifications"
@@ -61,7 +61,7 @@ export default {
                 return [];
             }
         },
-        userDropdownMapper: {
+        dropdownMapper: {
             type: Object,
             default() {
                 return {}

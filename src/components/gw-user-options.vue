@@ -53,7 +53,7 @@ export default {
             type: Object,
             required: true
         },
-        userDropdownMapper: {
+        dropdownMapper: {
             type: Object,
             default() {
                 return {}
