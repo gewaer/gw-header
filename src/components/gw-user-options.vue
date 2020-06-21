@@ -70,7 +70,7 @@ export default {
                 {
                     name: "user-settings",
                     label: "Users Settings",
-                    route: "settingsCompaniesProfile"
+                    route: "settingsUsersProfile"
                 }, 
                 {
                     label: "{company} Settings",
@@ -96,7 +96,7 @@ export default {
     computed: {
         userOptionsList() {
             return this.userDropdownOptions.map(item => {
-                const label = this.userDropdownMapper[item.name] || item.label
+                const label = this.dropdownMapper[item.name] || item.label
                 item.label = label.replace("{company}", this.companyData.name)
                 return item
             })
