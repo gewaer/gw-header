@@ -20,12 +20,10 @@
         </template>
         <template slot="body">
             <span class="dropdown-title">My Profile</span>
-            <template
-                v-for="option in userOptionsList" 
-            >
-                <router-link 
-                    v-if="!option.validateAcl || $can(option.name, 'settingsmenu')" 
-                    :key="option.route" 
+            <template v-for="option in userOptionsList">
+                <router-link
+                    v-if="$can(option.name, 'settingsmenu')"
+                    :key="option.route"
                     :to="{ name: option.route }"
                     class="dropdown-item"
                 >
@@ -71,24 +69,21 @@ export default {
                     name: "user-settings",
                     label: "Users Settings",
                     route: "settingsUsersProfile"
-                }, 
+                },
                 {
                     label: "{company} Settings",
                     route: "settingsCompaniesProfile",
-                    name: "companies-settings",
-                    validateAcl: true
+                    name: "companies-settings"
                 },
                 {
                     label: "App Settings",
                     route: "settingsAppsCustomFieldsList",
-                    name: "app-settings",
-                    validateAcl: true
+                    name: "app-settings"
                 },
                 {
                     label: "Companies Manager",
                     route: "settingsManagerList",
-                    name: "companies-manager",
-                    validateAcl: true
+                    name: "companies-manager"
                 }
             ]
         };
@@ -96,9 +91,10 @@ export default {
     computed: {
         userOptionsList() {
             return this.userDropdownOptions.map(item => {
-                const label = this.dropdownMapper[item.name] || item.label
-                item.label = label.replace("{company}", this.companyData.name)
-                return item
+                const label = this.dropdownMapper[item.name] || item.label;
+                item.label = label.replace("{company}", this.companyData.name);
+
+                return item;
             })
         }
     },
@@ -111,7 +107,6 @@ export default {
                 this.userDropdownCoordenates.x = -145;
             }
         },
-
         logout() {
             axios({
                 method: "PUT",
