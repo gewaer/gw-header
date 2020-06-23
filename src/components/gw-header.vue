@@ -25,8 +25,10 @@
             </div>
             <div class="right-side-header d-flex">
                 <gw-user-options
+                    v-if="showUserOptions"
                     :company-data="companyData"
                     :user-data="userData"
+                    :user-dropdown-mapper="dropdownMapper"
                 />
                 <gw-notifications
                     v-if="showNotifications"
@@ -59,6 +61,12 @@ export default {
                 return [];
             }
         },
+        dropdownMapper: {
+            type: Object,
+            default() {
+                return {}
+            }
+        },
         companyBranchData: {
             type: Object,
             required: true
@@ -87,6 +95,10 @@ export default {
         sidebarState: {
             type: String,
             default: "hover"
+        },
+        showUserOptions: {
+            type: Boolean,
+            default: true
         },
         userData: {
             type: Object,
