@@ -22,7 +22,7 @@
             <span class="dropdown-title">My Profile</span>
             <template v-for="option in userOptionsList">
                 <router-link
-                    v-if="$can(option.name, 'settingsmenu')"
+                    v-if="option.hasAcl && $can(option.name, 'settingsmenu')"
                     :key="option.route"
                     :to="{ name: option.route }"
                     class="dropdown-item"
@@ -73,17 +73,20 @@ export default {
                 {
                     label: "{company} Settings",
                     route: "settingsCompaniesProfile",
-                    name: "companies-settings"
+                    name: "companies-settings",
+                    hasAcl: true
                 },
                 {
                     label: "App Settings",
                     route: "settingsAppsCustomFieldsList",
-                    name: "app-settings"
+                    name: "app-settings",
+                    hasAcl: true
                 },
                 {
                     label: "Companies Manager",
                     route: "settingsManagerList",
-                    name: "companies-manager"
+                    name: "companies-manager",
+                    hasAcl: true
                 }
             ]
         };
