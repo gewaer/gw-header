@@ -5,11 +5,14 @@
             <i class="fas fa-th" />
         </template>
         <template slot="body">
-            <a href="#" target="_blank" class="dropdown-item">
-                <span>Application 1</span>
-            </a>
-            <a href="#" target="_blank" class="dropdown-item">
-                <span>Application 2</span>
+            <a
+                v-for="app in appsList"
+                :key="`app-${app.id}`"
+                :href="app.url"
+                target="_blank"
+                class="dropdown-item"
+            >
+                <span>{{ app.name }}</span>
             </a>
         </template>
     </dropdown>
@@ -17,7 +20,15 @@
 
 <script>
 export default {
-    name: "GwAppSwitcher"
+    name: "GwAppSwitcher",
+    props: {
+        appsList: {
+            type: Array,
+            default() {
+                return [];
+            }
+        }
+    }
 }
 </script>
 

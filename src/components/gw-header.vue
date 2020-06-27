@@ -1,5 +1,8 @@
 <template>
-    <div class="header app-header">
+    <div
+        :class="{ 'menu-pinned': sidebarState == 'opened' }"
+        class="header app-header"
+    >
         <div class="sidebar-toggle" @click="$emit('handle-sidebar')">
             <img src="/img/icons/hamburguer-menu.png">
         </div>
@@ -14,15 +17,21 @@
                     />
                 </slot>
                 <slot name="app-switcher">
-                    <gw-app-switcher />
+                    <gw-app-switcher
+                        v-if="appsList.length > 1"
+                        :apps-list="appsList"
+                    />
                 </slot>
             </div>
             <div class="right-side-header d-flex">
                 <gw-user-options
+                    v-if="showUserOptions"
                     :company-data="companyData"
                     :user-data="userData"
+                    :user-dropdown-mapper="dropdownMapper"
                 />
                 <gw-notifications
+                    v-if="showNotifications"
                     :count="notificationsCount"
                     @toggle-notifications="$emit('toggle-notifications')"
                 />
@@ -46,6 +55,18 @@ export default {
         GwUserOptions
     },
     props: {
+        appsList: {
+            type: Array,
+            default() {
+                return [];
+            }
+        },
+        dropdownMapper: {
+            type: Object,
+            default() {
+                return {}
+            }
+        },
         companyBranchData: {
             type: Object,
             required: true
@@ -67,9 +88,17 @@ export default {
             type: Number,
             required: true
         },
-        showSidebar: {
+        showNotifications: {
             type: Boolean,
-            default: false
+            default: true
+        },
+        sidebarState: {
+            type: String,
+            default: "hover"
+        },
+        showUserOptions: {
+            type: Boolean,
+            default: true
         },
         userData: {
             type: Object,
@@ -92,6 +121,10 @@ export default {
     padding: 0;
     padding-left: 70px;
     display: flex;
+
+    &.menu-pinned  {
+        padding-left: 280px;
+    }
 
     @media (max-width: 991px) {
         padding-left: 0;

@@ -3,7 +3,7 @@
         class="notification-badge"
         @click.prevent="$emit('toggle-notifications')"
     >
-        <span class="notification-bubble" />
+        <span v-if="count" class="notification-bubble" />
         <i class="fas fa-bell" />
     </div>
 </template>
