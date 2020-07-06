@@ -25,10 +25,10 @@
             </div>
             <div class="right-side-header d-flex">
                 <gw-user-options
-                    v-if="showUserOptions"
                     :company-data="companyData"
                     :user-data="userData"
-                    :user-dropdown-mapper="dropdownMapper"
+                    :show-options="showUserOptions"
+                    :dropdown-mapper="dropdownMapper"
                 />
                 <gw-notifications
                     v-if="showNotifications"
