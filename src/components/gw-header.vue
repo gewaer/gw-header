@@ -92,10 +92,6 @@ export default {
             type: Boolean,
             default: true
         },
-        showSidebar: {
-            type: Boolean,
-            default: false
-        },
         sidebarState: {
             type: String,
             default: "hover"
