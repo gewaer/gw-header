@@ -1,6 +1,6 @@
 {
   "name": "@gewaer/gw-header",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Base header component for the Gewaer platform.",
   "main": "./dist/gw-header.umd.min.js",
   "files": [
@@ -39,6 +39,6 @@
     "node-sass": "^4.13.0",
     "pre-commit": "^1.2.2",
     "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.11"
   }
 }
