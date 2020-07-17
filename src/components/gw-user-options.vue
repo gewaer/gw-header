@@ -19,13 +19,13 @@
             </div>
         </template>
         <template slot="body">
-            <span class="dropdown-title" v-if="showUserOptions">My Profile</span>
+            <span v-if="showUserOptions" class="dropdown-title">My Profile</span>
             <div v-if="showOptions">
                 <template
                     v-for="option in userOptionsList" 
                 >
                     <router-link 
-                        v-if="!option.validateAcl || $can(option.name, 'settingsmenu')" 
+                        v-if="$can(option.name, 'settingsmenu')" 
                         :key="option.route" 
                         :to="{ name: option.route }"
                         class="dropdown-item"
