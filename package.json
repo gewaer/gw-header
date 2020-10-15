@@ -27,7 +27,7 @@
     "lint"
   ],
   "dependencies": {
-    "vue": "^2.6.11"
+    "vue": "^2.6.12"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.5",
@@ -39,6 +39,6 @@
     "node-sass": "^4.13.0",
     "pre-commit": "^1.2.2",
     "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.12"
   }
 }

@@ -19,17 +19,21 @@
             </div>
         </template>
         <template slot="body">
-            <span class="dropdown-title">My Profile</span>
-            <template v-for="option in userOptionsList">
-                <router-link
-                    v-if="$can(option.name, 'settingsmenu')"
-                    :key="option.route"
-                    :to="{ name: option.route }"
-                    class="dropdown-item"
+            <span v-if="showOptions" class="dropdown-title">My Profile</span>
+            <div v-if="showOptions">
+                <template
+                    v-for="option in userOptionsList"
                 >
-                    <span> {{ option.label }} </span>
-                </router-link>
-            </template>
+                    <router-link
+                        v-if="!option.validateAcl || $can(option.name, 'settingsmenu')"
+                        :key="option.route"
+                        :to="{ name: option.route }"
+                        class="dropdown-item"
+                    >
+                        <span> {{ option.label }} </span>
+                    </router-link>
+                </template>
+            </div>
 
             <a href="#" class="dropdown-item logout-button" @click.prevent="logout()">
                 <span>Logout</span>
@@ -46,6 +50,10 @@ export default {
         companyData: {
             type: Object,
             required: true
+        },
+        showOptions: {
+            type: Boolean,
+            default: true
         },
         userData: {
             type: Object,
