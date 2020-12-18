@@ -8,7 +8,7 @@
         </div>
         <div class="header-container">
             <div class="left-side-header d-flex h-100">
-                <slot name="companies-switcher">
+                <slot v-if="!hideCompanyName" name="companies-switcher">
                     <gw-companies-switcher
                         :branch-data="companyBranchData"
                         :company-data="companyData"
@@ -103,6 +103,9 @@ export default {
         userData: {
             type: Object,
             required: true
+        },
+        hideCompanyName: {
+            type: Boolean
         }
     }
 };

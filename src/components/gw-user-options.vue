@@ -19,7 +19,7 @@
             </div>
         </template>
         <template slot="body">
-            <span class="dropdown-title" v-if="showOptions">My Profile</span>
+            <span v-if="showOptions" class="dropdown-title">My Profile</span>
             <div v-if="showOptions">
                 <template
                     v-for="option in userOptionsList"
@@ -81,12 +81,12 @@ export default {
                 {
                     label: "{company} Settings",
                     route: "settingsCompaniesProfile",
-                    name: "companies-settings",
+                    name: "companies-settings"
                 },
                 {
                     label: "App Settings",
                     route: "settingsAppsCustomFieldsList",
-                    name: "app-settings",
+                    name: "app-settings"
                 },
                 {
                     label: "Companies Manager",
@@ -120,7 +120,7 @@ export default {
                 method: "PUT",
                 url: "/auth/logout"
             }).then(() => {
-                Cookies.remove("token");
+                Cookies.remove("token", { path: "/", domain: process.env.VUE_APP_DOMAIN });
                 this.$store.dispatch("User/setToken", null);
                 this.$store.dispatch("Application/resetGlobalData");
                 this.$router.push({ name: "login" });
