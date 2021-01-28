@@ -105,7 +105,8 @@ export default {
             required: true
         },
         hideCompaniesSwitcher: {
-            type: Boolean
+            type: Boolean,
+            default: false
         }
     }
 };
