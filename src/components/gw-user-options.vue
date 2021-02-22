@@ -81,17 +81,20 @@ export default {
                 {
                     label: "{company} Settings",
                     route: "settingsCompaniesProfile",
-                    name: "companies-settings"
+                    name: "companies-settings",
+                    validateAcl: true
                 },
                 {
                     label: "App Settings",
                     route: "settingsAppsCustomFieldsList",
-                    name: "app-settings"
+                    name: "app-settings",
+                    validateAcl: true
                 },
                 {
                     label: "Companies Manager",
                     route: "settingsManagerList",
-                    name: "companies-manager"
+                    name: "companies-manager",
+                    validateAcl: true
                 }
             ]
         };
