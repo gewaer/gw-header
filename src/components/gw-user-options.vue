@@ -51,6 +51,10 @@ export default {
             type: Object,
             required: true
         },
+        domain: {
+            type: String,
+            required: true
+        },
         showOptions: {
             type: Boolean,
             default: true
@@ -123,7 +127,7 @@ export default {
                 method: "PUT",
                 url: "/auth/logout"
             }).then(() => {
-                Cookies.remove("token", { path: "/", domain: process.env.VUE_APP_DOMAIN });
+                Cookies.remove("token", { path: "/", domain: this.domain });
                 this.$store.dispatch("User/setToken", null);
                 this.$store.dispatch("Application/resetGlobalData");
                 this.$router.push({ name: "login" });
