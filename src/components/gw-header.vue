@@ -26,10 +26,10 @@
             <div class="right-side-header d-flex">
                 <gw-user-options
                     :company-data="companyData"
-                    :domain="domain"
                     :user-data="userData"
                     :show-options="showUserOptions"
                     :dropdown-mapper="dropdownMapper"
+                    @logout="$emit('logout')"
                 />
                 <gw-notifications
                     v-if="showNotifications"
@@ -84,10 +84,6 @@ export default {
             default() {
                 return [];
             }
-        },
-        domain: {
-            type: String,
-            default: process.env.VUE_APP_DOMAIN || ""
         },
         notificationsCount: {
             type: Number,

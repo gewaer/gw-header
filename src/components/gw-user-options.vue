@@ -35,7 +35,7 @@
                 </template>
             </div>
 
-            <a href="#" class="dropdown-item logout-button" @click.prevent="logout()">
+            <a href="#" class="dropdown-item logout-button" @click.prevent="$emit('logout')">
                 <span>Logout</span>
                 <i class="fas fa-sign-out-alt" />
             </a>
@@ -49,10 +49,6 @@ export default {
     props: {
         companyData: {
             type: Object,
-            required: true
-        },
-        domain: {
-            type: String,
             required: true
         },
         showOptions: {
@@ -121,17 +117,6 @@ export default {
             if (window.innerWidth <= 768) {
                 this.userDropdownCoordenates.x = -145;
             }
-        },
-        logout() {
-            axios({
-                method: "PUT",
-                url: "/auth/logout"
-            }).then(() => {
-                Cookies.remove("token", { path: "/", domain: this.domain });
-                this.$store.dispatch("User/setToken", null);
-                this.$store.dispatch("Application/resetGlobalData");
-                this.$router.push({ name: "login" });
-            });
         }
     }
 }
