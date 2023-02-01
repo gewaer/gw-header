@@ -3,14 +3,14 @@
         <multiselect
             :disabled="!shouldActivateSwitcher"
             :allow-empty="false"
-            :options="companiesList"
+            :options="companies"
             :searchable="false"
             :show-labels="false"
             :value="branchData"
             group-values="branches"
             group-label="name"
             label="name"
-            @select="company => $emit('select', company)"
+            @select="company => $emit(company.rooftop ? 'rooftop' : 'select', company)"
         />
     </div>
 </template>
@@ -39,10 +39,38 @@ export default {
             }
         }
     },
+    data() {
+        return {
+            companies: []
+        }
+    },
     computed: {
         shouldActivateSwitcher() {
             return this.companiesList.length > 1 || this.companyData.branches && this.companyData.branches.length > 1;
         }
+    },
+    mounted() {
+        this.companies = this.companiesList.map((company, index) => {
+            if ((index + 1) === this.companiesList.length) {
+                return {
+                    ...company,
+                    branches: [
+                        ...company.branches,
+                        {
+                            ...company.branches[0],
+                            id: parseInt(Math.random().toString().split(".")[1]),
+                            name: "All My Rooftops",
+                            rooftop: true
+                        }
+                    ],
+                    rooftop: true
+                }
+            }
+
+            return {
+                ...company
+            }
+        });
     }
 }
 </script>

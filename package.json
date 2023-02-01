@@ -1,6 +1,6 @@
 {
   "name": "@gewaer/gw-header",
-  "version": "0.2.12",
+  "version": "0.3.0",
   "description": "Base header component for the Gewaer platform.",
   "main": "./dist/gw-header.umd.min.js",
   "files": [

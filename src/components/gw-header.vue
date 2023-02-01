@@ -14,6 +14,7 @@
                         :company-data="companyData"
                         :companies-list="companiesList"
                         @select="company => $emit('selected-company', company)"
+                        @rooftop="company => $emit('rooftop', company)"
                     />
                 </slot>
                 <slot name="app-switcher">
